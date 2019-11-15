@@ -13,9 +13,7 @@ p {
 button:hover {
     color: blue;
 }
-input:hover {
-    color: rgb(255, 0, 0);
-}
+
 body{
     background-image: url("pexels-photo-273222.jpeg");
     
