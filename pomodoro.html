@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="pomodoro.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button id="start" onclick="pomo(5)" type="button">Start Session</button>
+    <button id="break" onclick="pomo(1)">Start Break</button>
+    <audio src="beep-02.wav" id="beep" preload="auto"></audio>
+    <div>
+        <p id="min" class="time">MIN</p>
+        <p class="time">:</p>
+        <p id="sec" class="time">SEC</p>
+    </div>
+    
+</body>
+<script>
+    var m=s=0;
+    var k=null;
+    function back(x){
+        if (x==1){
+            document.body.style.backgroundImage=url("pexels-photo.jpg");
+        }else{
+            document.body.style.backgroundImage=url("pexels-photo-273222.jpeg");
+        }
+    }
+    function pomo(x){
+        if (x==5){
+            
+            start();
+            
+        }else{
+            
+            breac();
+
+        }
+
+    }
+    function start() {
+        
+        m=s=0;
+        clearInterval(k);
+        k=setInterval(sess,1000);
+        function sess(){
+            m++;
+            if (m==60){
+                s++;
+                m=0;
+            }
+            if (s==25){
+                
+                document.getElementById("beep").play();
+                document.getElementById("beep").play();
+                document.getElementById("beep").play();
+                clearInterval(k);
+            }
+            document.getElementById("sec").innerHTML=m;
+            document.getElementById("min").innerHTML=s;
+        }
+    } 
+    function breac() {
+        
+        m=s=0;
+        clearInterval(k);
+        k=setInterval(bre,1000);
+        
+        function bre(){
+            m++;
+            
+            if (m==60){
+                s++;
+                m=0;
+            }
+            if (s==5){
+                
+            
+                document.getElementById("beep").play();
+                document.getElementById("beep").play();
+                document.getElementById("beep").play();
+                
+                clearInterval(k);
+            }
+            document.getElementById("sec").innerHTML=m;
+            document.getElementById("min").innerHTML=s;
+        }
+
+    }   
+</script>
+</html>
